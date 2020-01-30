@@ -1,3 +1,4 @@
+/*
 var express = require('express');
 var app = express();
 let helloWorld  = require('./controllers/helloWorld.js');
@@ -16,3 +17,26 @@ app.get('/',(function(req,res){
 }));
 
 var server=app.listen(3000,function() {});
+*/
+const express = require('express')
+const bodyParser = require('body-parser')
+const app = express()
+const port = 3000
+const db = require('./controllers/queries')
+
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+
+app.get('/status', (request, response) => {
+    response.json({ info: 'Node.js, Express, and Postgres API' })
+});
+
+app.listen(port, () => {
+    console.log(`App running on port ${port}.`)
+});
+
+app.get('/users', db.getUsers)
