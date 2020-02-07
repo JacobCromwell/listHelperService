@@ -5,6 +5,7 @@ CREATE TABLE Users(
    fname VARCHAR (50),
    password VARCHAR (355) NOT NULL,
    email VARCHAR (355) UNIQUE NOT NULL,
+   active boolean,
    create_date TIMESTAMP NOT NULL,
    update_date TIMESTAMP NOT NULL,
    last_login TIMESTAMP
