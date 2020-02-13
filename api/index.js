@@ -39,6 +39,7 @@ app.get('/status', (request, response) => {
 
 app.get('/users', db.getUsers)
 
+app.get('/item/:list_id', dbItem.getItem)
 app.post('/item', dbItem.createItem)
 app.put('/item/:id', dbItem.updateItem)
 app.delete('/item/:id', dbItem.deleteItem)

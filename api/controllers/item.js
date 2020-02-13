@@ -3,6 +3,19 @@ const validationService = require('../services/ValidationService')
 
 let pool = db.getPool();
 
+const getItem = (request, response) => {
+
+    let { list_id } = request.body;
+    let queryString = 'SELECT * FROM item WHERE list_id = ' + list_id + ';'
+
+    pool.query(queryString, (error, results) => {
+        if (error) {
+          throw error
+        }
+        response.status(200).json(results.rows)
+      })
+}
+
 const createItem = (request, response) => {
 
     let { list_id, url, img_url, purchased, title, description } = request.body
@@ -78,6 +91,7 @@ const updateItem = (request, response) => {
 }
 
 module.exports = {
+    getItem,
     createItem,
     updateItem,
     deleteItem
