@@ -7,6 +7,13 @@ let validateRequired = (param) => {
     }
 }
 
+let validateIsNumber = (param) => {
+    if(isNaN(param)){
+        return false;
+    }
+    return true;
+}
+
 module.exports = {
     validateRequired
 }

@@ -4,7 +4,6 @@ const validationService = require('../services/ValidationService')
 let pool = db.getPool();
 
 const getItem = (request, response) => {
-
     let { list_id } = request.body;
     let queryString = 'SELECT * FROM item WHERE list_id = ' + list_id + ';'
 
@@ -17,23 +16,30 @@ const getItem = (request, response) => {
 }
 
 const createItem = (request, response) => {
+    /*
+        TODO
+        Need to handle cases where we pass in a list_id that doesn't exist in the DB
+    */
 
     let { list_id, url, img_url, purchased, title, description } = request.body
     let create_date = new Date(Date.now()).toLocaleString();
     let update_date = new Date(Date.now()).toLocaleString();
 
-    pool.query('INSERT INTO item (list_id, url, img_url, purchased, title, description, create_date, update_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
+    if(isNaN(list_id)){
+        throw 'list_id must be a number'
+    }
+
+    pool.query('INSERT INTO item (list_id, url, img_url, purchased, title, description, create_date, update_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) returning id',
         [list_id, url, img_url, purchased, title, description, create_date, update_date], (error, results) => {
             if (error) {
                 throw error
             }
-            console.log('results: \n', results);
-            response.status(201).send(`Item added with ID: ${results.insertId}`)
+            //console.log('results: \n', results);
+            response.status(201).send(`Item added with ID: ${results.rows[0].id}`)
         })
 }
 
 const deleteItem = (request, response) => {
-
     const id = parseInt(request.params.id)
     if (validationService.validateRequired(id) === false) {
         throw 'id is required';
@@ -44,14 +50,11 @@ const deleteItem = (request, response) => {
             if (error) {
                 throw error
             }
-            console.log('results: \n', results);
-            response.status(200).send(`Item was deleted`);
-        })
-
+            response.status(200).send(`deleted ${results.rowCount} Item(s)`);
+        });
 }
 
 const updateItem = (request, response) => {
-
     const id = parseInt(request.params.id)
     if (validationService.validateRequired(id) === false) {
         throw 'id is required';
@@ -62,6 +65,13 @@ const updateItem = (request, response) => {
 
     let { list_id, url, img_url, purchased, title, description } = request.body
     let arrayKeys = []
+
+    // Validations. Is list_id included, is it a number?
+    if(list_id){
+        if(isNaN(list_id)){
+            throw 'list_id must be a number'
+        }
+    }
 
     let reqBody = request.body;
     for (var key in reqBody) {
