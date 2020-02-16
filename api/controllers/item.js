@@ -4,8 +4,11 @@ const validationService = require('../services/ValidationService')
 let pool = db.getPool();
 
 const getItem = (request, response) => {
-    let { list_id } = request.body;
+
+    //let { list_id } = request.body;
+    let list_id = request.params.list_id;
     let queryString = 'SELECT * FROM item WHERE list_id = ' + list_id + ';'
+    console.log('called getItem with queryString: ' + queryString);
 
     pool.query(queryString, (error, results) => {
         if (error) {
