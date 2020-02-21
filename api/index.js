@@ -1,9 +1,12 @@
+// Express Server
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
 const db = require('./controllers/queries')
+const dbItem = require('./controllers/item')
 
+// CORS bits
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -35,7 +38,11 @@ app.get('/status', (request, response) => {
 });
 
 app.get('/users', db.getUsers)
-app.post('/item', db.createItem)
+
+app.get('/item/:list_id', dbItem.getItem)
+app.post('/item', dbItem.createItem)
+app.put('/item/:id', dbItem.updateItem)
+app.delete('/item/:id', dbItem.deleteItem)
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)

@@ -4,6 +4,7 @@ CREATE TABLE helper_lists
 	user_id integer NOT NULL,
 	private boolean NOT NULL,
 	list_type VARCHAR(25),
+	list_name VARCHAR(255),
 	create_date TIMESTAMP NOT NULL,
     update_date TIMESTAMP NOT NULL,
 	CONSTRAINT helper_list_id_fkey FOREIGN KEY (user_id)
