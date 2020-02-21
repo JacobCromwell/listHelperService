@@ -11,6 +11,35 @@ const getPool = () => {
   return pool;
 }
 
+const getUsersOld = (request, response) => {
+  pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
+
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize({
+  dialect: 'postgres',
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  options: {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT
+  }
+
+
+});
+
+const getSequelize = () => {
+  return sequelize;
+}
+
 const getUsers = (request, response) => {
   pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
     if (error) {
@@ -20,7 +49,20 @@ const getUsers = (request, response) => {
   })
 }
 
+async function trySequelize() {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
+
+
+
 module.exports = {
   getPool,
-  getUsers
+  getSequelize,
+  getUsers,
+  trySequelize
 }

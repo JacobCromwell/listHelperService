@@ -34,7 +34,8 @@ app.use(
 );
 
 app.get('/status', (request, response) => {
-    response.json({ info: 'Node.js, Express, and Postgres API' })
+    db.trySequelize();
+    response.json({ info: 'Node.js, Express, and Postgres API. Communicating with postgres via Sequelize ORM tool. Successful connection.' })
 });
 
 app.get('/users', db.getUsers)
