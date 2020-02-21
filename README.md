@@ -22,3 +22,10 @@ Currently the service is run through the index (which also handles routing)
 * Auditing
 * Health checks
 * performance metrics (attempt to use pre-existing AWS metrics)
+* users
+    * password expiration date
+    * last active
+    * change email address sends a message to both email addresses to protect against attackers changing emails
+* items
+    * only list owner can delete an item
+    * any allowedUser can update an item's purchased flag
