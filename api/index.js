@@ -5,6 +5,13 @@ const app = express()
 const port = 3000
 const db = require('./controllers/queries')
 const dbItem = require('./controllers/item')
+const dbUser = require('./controllers/UsersController')
+
+const sequelize = require('../db/sequelizeDB');
+
+sequelize.authenticate()
+  .then(() => console.log('Successfully connected to DB using Sequelize...'))
+  .catch(err => console.log('Error: ' + err));
 
 // CORS bits
 app.use(function (req, res, next) {
@@ -34,11 +41,15 @@ app.use(
 );
 
 app.get('/status', (request, response) => {
-    db.trySequelize();
-    response.json({ info: 'Node.js, Express, and Postgres API. Communicating with postgres via Sequelize ORM tool. Successful connection.' })
+    try {
+      response.json({ info: 'Node.js, Express, and Postgres API. Communicating with postgres via Sequelize ORM tool. Successful connection.' })
+    } catch (error) {
+      console.log('error: ' + error);
+      throw error;
+    }
 });
 
-app.get('/users', db.getUsers)
+app.use('/users', require('./controllers/UsersController'));
 
 app.get('/item/:list_id', dbItem.getItem)
 app.post('/item', dbItem.createItem)

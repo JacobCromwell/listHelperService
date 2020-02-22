@@ -4,6 +4,7 @@ CREATE TABLE Users(
    lname VARCHAR (50),
    fname VARCHAR (50),
    password VARCHAR (355) NOT NULL,
+   password_expir TIMESTAMP NOT NULL, 
    email VARCHAR (355) UNIQUE NOT NULL,
    active boolean,
    create_date TIMESTAMP NOT NULL,
@@ -17,6 +18,7 @@ CREATE TABLE helper_list
 	user_id integer NOT NULL,
 	private boolean NOT NULL,
 	list_type VARCHAR(25),
+	list_name VARCHAR(255),
 	create_date TIMESTAMP NOT NULL,
     update_date TIMESTAMP NOT NULL,
 	CONSTRAINT helper_list_id_fkey FOREIGN KEY (user_id)
