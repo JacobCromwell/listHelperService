@@ -6,7 +6,8 @@ const Users = sequelize.define('users', {
         type: DataTypes.INTEGER,
         primaryKey: true,
         required: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     },
     username: {
         type: DataTypes.STRING,
@@ -49,9 +50,11 @@ const Users = sequelize.define('users', {
     }
 }, {
     tableName: 'users',
-    timestamps: false
+    timestamps: true,
+    createdAt: 'create_date',
+    updatedAt: 'update_date'
 });
 
 Users.sync();
-console.log('User data model sync has been fired off');
+
 module.exports = Users;

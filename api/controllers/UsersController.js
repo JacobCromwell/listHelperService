@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const sequelize = require('../../db/sequelizeDB');
-const User = require('../models/User');
+const User = require('../models/users');
 
 // Users is prepended to the front of all these routes
 router.get('/', (req, res) =>

@@ -1,6 +1,6 @@
 -- max url size might be a problem
 -- max img_url size might be a problem
-CREATE TABLE item
+CREATE TABLE items
 (
 	id serial PRIMARY KEY,
 	list_id integer NOT NULL,

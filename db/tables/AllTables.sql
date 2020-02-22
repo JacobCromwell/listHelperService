@@ -1,4 +1,4 @@
-CREATE TABLE Users(
+CREATE TABLE users(
    id serial PRIMARY KEY,
    username VARCHAR (50) UNIQUE NOT NULL,
    lname VARCHAR (50),
@@ -12,7 +12,7 @@ CREATE TABLE Users(
    last_login TIMESTAMP
 );
 
-CREATE TABLE helper_list
+CREATE TABLE helper_lists
 (
 	id serial PRIMARY KEY,
 	user_id integer NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE allowed_users
 );
 
 -- max url size might be a problem
-CREATE TABLE item
+CREATE TABLE items
 (
 	id serial PRIMARY KEY,
 	list_id integer NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE item
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
-CREATE TABLE user_group
+CREATE TABLE user_groups
 (
 	id serial PRIMARY KEY,
 	user_id integer NOT NULL,
