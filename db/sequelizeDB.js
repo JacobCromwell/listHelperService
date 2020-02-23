@@ -17,3 +17,24 @@ module.exports = new Sequelize({
       idle: 10000
   }
 });
+
+/*
+// Connect all the models/tables in the database to a db object, 
+//so everything is accessible via one object
+const db = {};
+
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+
+//Models/tables
+db.users = require('../models/users.js')(sequelize, Sequelize);
+db.comments = require('../models/comments.js')(sequelize, Sequelize);
+db.posts = require('../models/posts.js')(sequelize, Sequelize);
+
+//Relations
+db.comments.belongsTo(db.posts);
+db.posts.hasMany(db.comments);
+db.posts.belongsTo(db.users);
+db.users.hasMany(db.posts);
+
+*/

@@ -60,7 +60,8 @@ const Items = sequelize.define('items', {
     tableName: 'items',
     timestamps: true,
     createdAt: 'create_date',
-    updatedAt: 'update_date'
+    updatedAt: 'update_date',
+    underscored: true
 });
 
 Items.sync();

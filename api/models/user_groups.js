@@ -31,7 +31,8 @@ const User_Groups = sequelize.define('user_groups', {
     }
 }, {
     tableName: 'user_groups',
-    timestamps: false
+    timestamps: false,
+    underscored: true
 });
 
 User_Groups.sync();

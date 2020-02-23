@@ -44,6 +44,7 @@ const Helper_Lists = sequelize.define('helper_lists', {
     },
 }, {
     tableName: 'helper_lists',
+    underscored: true,
     timestamps: true,
     createdAt: 'create_date',
     updatedAt: 'update_date'

@@ -35,6 +35,7 @@ const Allowed_Users = sequelize.define('allowed_users', {
  {
     tableName: 'allowed_users',
     timestamps: false,
+    underscored: true,
     associations: true,
     indexes: [
         {

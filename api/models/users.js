@@ -52,7 +52,8 @@ const Users = sequelize.define('users', {
     tableName: 'users',
     timestamps: true,
     createdAt: 'create_date',
-    updatedAt: 'update_date'
+    updatedAt: 'update_date',
+    underscored: true
 });
 
 Users.sync();
