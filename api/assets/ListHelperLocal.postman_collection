@@ -1,0 +1,692 @@
+{
+	"info": {
+		"_postman_id": "08d7f34f-9994-4079-bf8e-86af80fe59ef",
+		"name": "List Helper Local",
+		"description": "This collection is for the list helper running on a local dev environment.\n\n-End Transmission...",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/:id/helper_lists",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/1/helper_lists",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"1",
+						"helper_lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"sequelizeTestAccount\",\r\n    \"lname\": \"testLast\",\r\n    \"fname\": \"testFirst\",\r\n    \"password\": \"encrypted password here\",\r\n    \"email\": \"sequelizeTestAccount@gmail.com\",\r\n    \"active\": null\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"updatedsequelizeTestAccount\",\r\n    \"lname\": \"updatedLast\",\r\n    \"password\": \"encrypted password here\",\r\n    \"active\": true\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "helper_lists",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/helper_lists",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"helper_lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "helper_lists/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/helper_lists/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"helper_lists",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "helper_lists/:id/items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/helper_lists/1/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"helper_lists",
+						"1",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "helper_lists",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"user_id\": 1,\r\n        \"private\": \"true\",\r\n        \"list_type\": \"shopping\",\r\n        \"list_name\": \"sequelizeTestList\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/helper_lists/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"helper_lists",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "helper_lists",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"private\": \"false\",\r\n        \"list_type\": \"UPDATEDshopping\",\r\n        \"list_name\": \"sequelizeTestList\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/helper_lists/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"helper_lists",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "helper_lists/:id/allowed_users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/helper_lists/1/allowed_users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"helper_lists",
+						"1",
+						"allowed_users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allowed_users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/allowed_users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"allowed_users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allowed_users",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"user_id\": 1,\r\n        \"helper_list_id\": \"2\",\r\n        \"accepted\": true\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/allowed_users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"allowed_users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allowed_users/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"accepted\": true\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/allowed_users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"allowed_users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allowed_users/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/allowed_users/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"allowed_users",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_groups",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user_groups",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user_groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_groups",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"user_id\": 1,\r\n        \"member_id\": 2,\r\n        \"accepted\": \"true\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/user_groups",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user_groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_groups/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"user_id\": 1,\r\n        \"member_id\": 2,\r\n        \"accepted\": false\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/user_groups/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user_groups",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_groups",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/user_groups/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user_groups",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "items",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"list_id\": \"1\",\n\t\"url\": \"postUrl.com\",\n\t\"img_url\": \"postUrl.com\",\n\t\"purchased\": \"0\",\n\t\"title\": \"title\",\n\t\"description\": \"description\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "items/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"list_id\": \"1\",\n\t\"url\": \"postUrl.com\",\n\t\"img_url\": \"postUrl.com\",\n\t\"purchased\": \"0\",\n\t\"title\": \"title\",\n\t\"description\": \"description\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/items/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "items",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"helper_list_id\": \"1\",\n\"url\": \"postUrl.com\",\n\"img_url\": \"postUrl.com\",\n\"purchased\": \"0\",\n\"title\": \"title\",\n\"description\": \"description\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "items/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"helper_list_id\": \"1\",\n\"url\": \"UPDATEDpostUrl.com\",\n\"img_url\": \"UPDATEDpostUrl.com/imageURL\",\n\"purchased\": \"0\",\n\"title\": \"title\",\n\"description\": \"description\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/items/28",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items",
+						"28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "items/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"helper_list_id\": \"1\",\n\"url\": \"UPDATEDpostUrl.com\",\n\"img_url\": \"UPDATEDpostUrl.com/imageURL\",\n\"purchased\": \"0\",\n\"title\": \"title\",\n\"description\": \"description\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/items/28",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items",
+						"28"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             primaryKey: true,
             required: true,
-            allowNull: false
+            allowNull: false,
+            autoIncrement: true
         },
         user_id: {
             type: DataTypes.INTEGER,
@@ -33,6 +34,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         list_name: {
             type: DataTypes.STRING,
+            required: true,
+            allowNull: false
+        },
+        private: {
+            type: DataTypes.BOOLEAN,
             required: true,
             allowNull: false
         },

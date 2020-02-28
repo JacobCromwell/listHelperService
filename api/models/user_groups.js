@@ -16,6 +16,13 @@ id serial PRIMARY KEY,
 
 module.exports = (sequelize, DataTypes) => {
     const User_Groups = sequelize.define('user_groups', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            required: true,
+            allowNull: false,
+            autoIncrement: true
+        },
         user_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,

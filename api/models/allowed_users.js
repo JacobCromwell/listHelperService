@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const { sequelize, db } = require('../../db/sequelizeDB');
 
 /*
-list_id integer NOT NULL,
+helper_list_id integer NOT NULL,
 	user_id integer NOT NULL,
 	accepted boolean NOT NULL,
 	PRIMARY KEY (list_id, user_id),
@@ -16,16 +16,21 @@ list_id integer NOT NULL,
 
 module.exports = (sequelize, DataTypes) => {
     const Allowed_Users = sequelize.define('allowed_users', {
-        list_id: {
+        id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
+            required: true,
+            allowNull: false,
+            autoIncrement: true
+        },
+        helper_list_id: {
+            type: DataTypes.INTEGER,
             required: true,
             allowNull: false
         },
         user_id: {
             type: DataTypes.INTEGER,
             required: true,
-            primaryKey: true,
             allowNull: false
         },
         accepted: {

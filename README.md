@@ -19,6 +19,7 @@ Currently the service is run through the index (which also handles routing)
     * allowedUsers
 * Tests
 * validations
+    * Sequelize is validating correctly it just is stuck in the console and needs to bubble up
 * Logging
 * Auditing
 * Health checks
