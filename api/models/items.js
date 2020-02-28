@@ -16,54 +16,57 @@ id serial PRIMARY KEY,
       ON UPDATE NO ACTION ON DELETE NO ACTION
       */
 
-const Items = sequelize.define('items', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        required: true,
-        allowNull: false
-    },
-    list_id: {
-        type: DataTypes.INTEGER,
-        required: true,
-        allowNull: false
-    },
-    url: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    img_url: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    purchased: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
-    },
-    title: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    description: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    create_date: {
-        type: DataTypes.DATE,
-        allowNull: false
-    },
-    update_date: {
-        type: DataTypes.DATE,
-        allowNull: false
-    },
-}, {
-    tableName: 'items',
-    timestamps: true,
-    createdAt: 'create_date',
-    updatedAt: 'update_date',
-    underscored: true
-});
+module.exports = (sequelize, DataTypes) => {
+    const Items = sequelize.define('items', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            required: true,
+            allowNull: false
+        },
+        list_id: {
+            type: DataTypes.INTEGER,
+            required: true,
+            allowNull: false
+        },
+        url: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        img_url: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        purchased: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
+        },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        create_date: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+        update_date: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+    }, {
+        tableName: 'items',
+        timestamps: true,
+        createdAt: 'create_date',
+        updatedAt: 'update_date',
+        underscored: true
+    });
 
-Items.sync();
+    Items.sync();
+    return Items;
+}
 
-module.exports = Items;
+//module.exports = Items;

@@ -7,7 +7,7 @@ const db = require('./controllers/queries')
 const dbItem = require('./controllers/item')
 const dbUser = require('./controllers/UsersController')
 
-const sequelize = require('../db/sequelizeDB');
+const {sequelize} = require('../db/sequelizeDB');
 
 sequelize.authenticate()
   .then(() => console.log('Successfully connected to DB using Sequelize...'))

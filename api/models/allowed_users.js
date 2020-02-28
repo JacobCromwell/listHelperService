@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../../db/sequelizeDB');
+const { sequelize, db } = require('../../db/sequelizeDB');
 
 /*
 list_id integer NOT NULL,
@@ -14,36 +14,32 @@ list_id integer NOT NULL,
       ON UPDATE NO ACTION ON DELETE NO ACTION
       */
 
-const Allowed_Users = sequelize.define('allowed_users', {
-    list_id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        required: true,
-        allowNull: false
-    },
-    user_id: {
-        type: DataTypes.INTEGER,
-        required: true,
-        primaryKey: true,
-        allowNull: false
-    },
-    accepted: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
-    }
-},
- {
-    tableName: 'allowed_users',
-    timestamps: false,
-    underscored: true,
-    associations: true,
-    indexes: [
-        {
-            unique: [user_id]
+module.exports = (sequelize, DataTypes) => {
+    const Allowed_Users = sequelize.define('allowed_users', {
+        list_id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            required: true,
+            allowNull: false
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            required: true,
+            primaryKey: true,
+            allowNull: false
+        },
+        accepted: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
-    ]
-});
+    },
+        {
+            tableName: 'allowed_users',
+            timestamps: false,
+            underscored: true,
+            associations: true
+        });
 
-Allowed_Users.sync();
-
-module.exports = Allowed_Users;
+    Allowed_Users.sync();
+    return Allowed_Users;
+}

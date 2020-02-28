@@ -14,27 +14,31 @@ id serial PRIMARY KEY,
       ON UPDATE NO ACTION ON DELETE NO ACTION
       */
 
-const User_Groups = sequelize.define('user_groups', {
-    user_id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        required: true,
-        allowNull: false
-    },
-    member_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    accepted: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
-    }
-}, {
-    tableName: 'user_groups',
-    timestamps: false,
-    underscored: true
-});
+module.exports = (sequelize, DataTypes) => {
+    const User_Groups = sequelize.define('user_groups', {
+        user_id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            required: true,
+            allowNull: false
+        },
+        member_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        accepted: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
+        }
+    }, 
+    {
+        tableName: 'user_groups',
+        timestamps: false,
+        underscored: true
+    });
 
-User_Groups.sync();
+    User_Groups.sync();
+    return User_Groups;
+}
 
-module.exports = User_Groups;
+//module.exports = User_Groups;
