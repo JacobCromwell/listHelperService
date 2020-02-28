@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { sequelize, db } = require('../../db/sequelizeDB');
+const { db } = require('../../db/sequelizeDB');
 const Users = require('../models/users');
 const Helper_Lists = require('../models/helper_lists');
 
@@ -16,7 +16,11 @@ router.get('/', (req, res) =>
         })
 );
 
-router.get('/:id', (req, res) =>
+router.get('/:id', (req, res) => {
+    if (validationService.validateRequired(req.params.id) === false) {
+        throw 'id is required';
+    }
+
     db.Users.findByPk(req.params.id)
         .then(users => {
             console.log(users);
@@ -26,7 +30,7 @@ router.get('/:id', (req, res) =>
             console.log('Error: ' + err);
             throw err;
         })
-);
+});
 
 
 router.get('/:id/helper_lists', (req, res) => {
@@ -99,9 +103,9 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     db.Users.destroy({
         where: {
-          id: req.params.id
+            id: req.params.id
         }
-      })
+    })
         .then(users => {
             console.log(users);
             res.status(200).json(users);

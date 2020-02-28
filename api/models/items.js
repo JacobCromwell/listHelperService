@@ -22,9 +22,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             primaryKey: true,
             required: true,
-            allowNull: false
+            allowNull: false,
+            autoIncrement: true
         },
-        list_id: {
+        helper_list_id: {
             type: DataTypes.INTEGER,
             required: true,
             allowNull: false
