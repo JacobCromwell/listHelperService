@@ -1,4 +1,4 @@
-CREATE TABLE user_group
+CREATE TABLE user_groups
 (
 	id serial PRIMARY KEY,
 	user_id integer NOT NULL,

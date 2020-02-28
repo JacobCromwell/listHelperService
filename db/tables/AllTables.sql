@@ -1,9 +1,10 @@
-CREATE TABLE Users(
+CREATE TABLE users(
    id serial PRIMARY KEY,
    username VARCHAR (50) UNIQUE NOT NULL,
    lname VARCHAR (50),
    fname VARCHAR (50),
    password VARCHAR (355) NOT NULL,
+   password_expir TIMESTAMP NOT NULL, 
    email VARCHAR (355) UNIQUE NOT NULL,
    active boolean,
    create_date TIMESTAMP NOT NULL,
@@ -11,12 +12,13 @@ CREATE TABLE Users(
    last_login TIMESTAMP
 );
 
-CREATE TABLE helper_list
+CREATE TABLE helper_lists
 (
 	id serial PRIMARY KEY,
 	user_id integer NOT NULL,
 	private boolean NOT NULL,
 	list_type VARCHAR(25),
+	list_name VARCHAR(255),
 	create_date TIMESTAMP NOT NULL,
     update_date TIMESTAMP NOT NULL,
 	CONSTRAINT helper_list_id_fkey FOREIGN KEY (user_id)
@@ -39,7 +41,7 @@ CREATE TABLE allowed_users
 );
 
 -- max url size might be a problem
-CREATE TABLE item
+CREATE TABLE items
 (
 	id serial PRIMARY KEY,
 	list_id integer NOT NULL,
@@ -55,7 +57,7 @@ CREATE TABLE item
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
-CREATE TABLE user_group
+CREATE TABLE user_groups
 (
 	id serial PRIMARY KEY,
 	user_id integer NOT NULL,

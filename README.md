@@ -9,6 +9,7 @@ Currently the service is run through the index (which also handles routing)
 `nodemon ./api/index.js`
 
 # Big TODO list
+* setup sequelize
 * Error Handling
 * More secure CORS
 * Add initial logic for DB tables
