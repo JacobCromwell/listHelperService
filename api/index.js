@@ -3,10 +3,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
-const db = require('./controllers/queries')
-const dbItem = require('./controllers/item')
-//const dbUsers = require('./controllers/UsersController')
-//const dbHelperLists = require('./controllers/HelperListsController')
 
 const {sequelize} = require('../db/sequelizeDB');
 
@@ -55,13 +51,6 @@ app.use('/helper_lists', require('./controllers/HelperListsController'));
 app.use('/allowed_users', require('./controllers/AllowedUsersController'));
 app.use('/user_groups', require('./controllers/UserGroupsController'));
 app.use('/items', require('./controllers/ItemsController'));
-
-/*
-app.get('/item/:list_id', dbItem.getItem)
-app.post('/item', dbItem.createItem)
-app.put('/item/:id', dbItem.updateItem)
-app.delete('/item/:id', dbItem.deleteItem)
-*/
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
