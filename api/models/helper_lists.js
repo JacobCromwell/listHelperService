@@ -35,7 +35,8 @@ module.exports = (sequelize, DataTypes) => {
         list_name: {
             type: DataTypes.STRING,
             required: true,
-            allowNull: false
+            allowNull: false,
+            validate: { len: [1, 100] }
         },
         private: {
             type: DataTypes.BOOLEAN,

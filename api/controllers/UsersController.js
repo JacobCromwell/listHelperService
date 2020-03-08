@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { db } = require('../../db/sequelizeDB');
-const Users = require('../models/users');
-const Helper_Lists = require('../models/helper_lists');
+const validationService = require('../services/ValidationService');
 
 router.get('/', (req, res) =>
     db.Users.findAll()
@@ -12,7 +11,7 @@ router.get('/', (req, res) =>
         })
         .catch(err => {
             console.log('Error: ' + err);
-            throw err;
+            res.status(500).send(err);;
         })
 );
 
@@ -28,7 +27,7 @@ router.get('/:id', (req, res) => {
         })
         .catch(err => {
             console.log('Error: ' + err);
-            throw err;
+            res.status(500).send(err);;
         })
 });
 
@@ -49,7 +48,7 @@ router.get('/:id/helper_lists', (req, res) => {
         })
         .catch(err => {
             console.log('Error: ' + err);
-            throw err;
+            res.status(500).send(err);
         })
 });
 
@@ -67,6 +66,8 @@ router.post('/', (req, res) => {
         last_login: last_login_date
     };
 
+    console.log('userToCreate: ' + JSON.stringify(userToCreate));
+
     db.Users.create(userToCreate)
         .then(users => {
             console.log(users);
@@ -74,7 +75,25 @@ router.post('/', (req, res) => {
         })
         .catch(err => {
             console.log('Error: ' + err);
-            throw err;
+            res.status(500).send(err);
+        })
+});
+
+router.post('/login', (req, res) => {
+    if (validationService.validateRequired(req.body.username) === false) {
+        throw 'username is required';
+    } else if(validationService.validateRequired(req.body.password) === false) {
+        throw 'password is required';
+    }
+
+    db.Users.findAll({where: {username: req.body.username, password: req.body.password}})
+        .then(users => {
+            console.log(users);
+            res.status(200).json(users);
+        })
+        .catch(err => {
+            console.log('Error: ' + err);
+            res.status(500).send(err);;
         })
 });
 
@@ -95,7 +114,7 @@ router.put('/:id', (req, res) => {
         })
         .catch(err => {
             console.log('Error: ' + err);
-            throw err;
+            res.status(500).send(err);;
         })
 });
 
@@ -112,7 +131,7 @@ router.delete('/:id', (req, res) => {
         })
         .catch(err => {
             console.log('Error: ' + err);
-            throw err;
+            res.status(500).send(err);;
         })
 });
 
